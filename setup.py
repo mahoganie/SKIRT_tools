@@ -9,7 +9,7 @@ setuptools.setup(
     version=__version__,
     author="Jenny Wang",
     author_email="jennydw@uci.edu",
-    description="Tool to streamline SKIRT simulations.",
+    description="Tool to run SKIRT simulations and make mock images.",
     url="https://github.com/mahoganie/SKIRT-tools",
     packages=setuptools.find_packages(),
     classifiers=[
