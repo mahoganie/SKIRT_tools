@@ -44,11 +44,3 @@ def random_viewing_angles():
     # Roll: uniform in [-360, 360]
     roll = random.uniform(-360, 360)
     return inclination, azimuthal, roll
-    
-
-
-# From mockobservation_tools (Courtney Klein)
-# def calculate_M_obs(g_r, Lsun, pixelscale=60/400):
-#     # L = 10**(0.4*(4.65-r_band_mag))
-#     M_obs = obs_mass2(Lsun, g_r)
-#     return M_obs
