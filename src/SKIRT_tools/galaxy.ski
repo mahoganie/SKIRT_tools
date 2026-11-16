@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A SKIRT parameter file © Astronomical Observatory, Ghent University -->
+<skirt-simulation-hierarchy type="MonteCarloSimulation" format="9" producer="SKIRT v9.0 (git 233b0e9-dirty built on 02/08/2025 at 02:04:46)" time="2026-07-18T14:20:50.723">
+    <MonteCarloSimulation userLevel="Expert" simulationMode="ExtinctionOnly" iteratePrimaryEmission="false" iterateSecondaryEmission="false" numPackets="1e7">
+        <random type="Random">
+            <Random seed="0"/>
+        </random>
+        <units type="Units">
+            <ExtragalacticUnits wavelengthOutputStyle="Wavelength" fluxOutputStyle="Frequency"/>
+        </units>
+        <cosmology type="Cosmology">
+            <LocalUniverseCosmology/>
+        </cosmology>
+        <sourceSystem type="SourceSystem">
+            <SourceSystem minWavelength="0.01 micron" maxWavelength="2 micron" sourceBias="0.5">
+                <sources type="Source">
+                    <ParticleSource filename="stars.scol" importVelocity="false" importVelocityDispersion="false" importCurrentMass="false" importBias="false" useColumns="x,y,z,hsml,mass,M,age" sourceWeight="1" wavelengthBias="0.5">
+                        <smoothingKernel type="SmoothingKernel">
+                            <CubicSplineSmoothingKernel/>
+                        </smoothingKernel>
+                        <sedFamily type="SEDFamily">
+                            <Starburst99SEDFamily/>
+                        </sedFamily>
+                        <wavelengthBiasDistribution type="WavelengthDistribution">
+                            <DefaultWavelengthDistribution/>
+                        </wavelengthBiasDistribution>
+                    </ParticleSource>
+                </sources>
+            </SourceSystem>
+        </sourceSystem>
+        <mediumSystem type="MediumSystem">
+            <MediumSystem>
+                <photonPacketOptions type="PhotonPacketOptions">
+                    <PhotonPacketOptions explicitAbsorption="false" forceScattering="true" minWeightReduction="1e4" minScattEvents="0" pathLengthBias="0.5"/>
+                </photonPacketOptions>
+                
+<media type="Medium">
+                    <ParticleMedium filename="gas.scol" massType="Mass" massFraction="0.4" importMetallicity="true" importTemperature="true" maxTemperature="1e6 K" importVelocity="false" importMagneticField="false" importVariableMixParams="false" useColumns="x, y, z, hsml, mass, M, temp">
+                        <smoothingKernel type="SmoothingKernel">
+                            <CubicSplineSmoothingKernel/>
+                        </smoothingKernel>
+                        <materialMix type="MaterialMix">
+                      <WeingartnerDraineDustMix numGraphiteSizes="5" numPAHSizes="5" numSilicateSizes="5"/>
+            </materialMix>
+                    </ParticleMedium>
+                </media>
+                <samplingOptions type="SamplingOptions">
+                    <SamplingOptions numDensitySamples="500" numPropertySamples="1" aggregateVelocity="Average"/>
+                </samplingOptions>
+                <grid type="SpatialGrid">
+                    <PolicyTreeSpatialGrid minX="-3e4 pc" maxX="3e4 pc" minY="-3e4 pc" maxY="3e4 pc" minZ="-3e4 pc" maxZ="3e4 pc" treeType="OctTree">
+                        <policy type="TreePolicy">
+                            <DensityTreePolicy minLevel="4" maxLevel="10" maxDustFraction="5e-6" maxDustOpticalDepth="0" wavelength="0.55 micron" maxDustDensityDispersion="0" maxElectronFraction="1e-6" maxGasFraction="1e-6"/>
+                        </policy>
+                    </PolicyTreeSpatialGrid>
+                </grid>
+            </MediumSystem>
+        </mediumSystem>
+        <instrumentSystem type="InstrumentSystem">
+            <InstrumentSystem>
+                <defaultWavelengthGrid type="WavelengthGrid">
+                    <PredefinedBandWavelengthGrid includeGALEX="true" includeSDSS="true" include2MASS="true" includeWISE="true" includeHERSCHEL="true"/>
+                </defaultWavelengthGrid>
+                <instruments type="Instrument">
+                    <FullInstrument instrumentName="xy" distance="50 Mpc" inclination="0 deg" azimuth="0 deg" roll="90 deg" fieldOfViewX="60 kpc" numPixelsX="800" centerX="0 pc" fieldOfViewY="60 kpc" numPixelsY="800" centerY="0 pc" recordComponents="true" numScatteringLevels="0" recordPolarization="true" recordStatistics="true"/>
+                    <FullInstrument instrumentName="xz" distance="50 Mpc" inclination="90 deg" azimuth="-90 deg" roll="0 deg" fieldOfViewX="60 kpc" numPixelsX="800" centerX="0 pc" fieldOfViewY="60 kpc" numPixelsY="800" centerY="0 pc" recordComponents="true" numScatteringLevels="0" recordPolarization="true" recordStatistics="true"/>
+                    <FullInstrument instrumentName="yz" distance="50 Mpc" inclination="90 deg" azimuth="0 deg" roll="0 deg" fieldOfViewX="60 kpc" numPixelsX="800" centerX="0 pc" fieldOfViewY="60 kpc" numPixelsY="800" centerY="0 pc" recordComponents="true" numScatteringLevels="0" recordPolarization="true" recordStatistics="true"/>
+                </instruments>
+            </InstrumentSystem>
+        </instrumentSystem>
+        <probeSystem type="ProbeSystem">
+      <ProbeSystem>
+        <probes type="Probe">
+            <SpatialGridPlotProbe probeName="grd"/>
+            <LuminosityProbe probeName="lum"/>
+            <DustAbsorptionPerCellProbe probeName="dust"/>
+        </probes>
+        </ProbeSystem>
+    </probeSystem>
+    </MonteCarloSimulation>
+</skirt-simulation-hierarchy>
