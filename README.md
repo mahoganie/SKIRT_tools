@@ -9,7 +9,7 @@ And they make use of FIRE studio, a code created by Alex Gurvich: https://ascl.n
 
 
 ## To install SKIRT and PTS:
-SKIRT and PTS are required to use these tools. Please navigate to the SKIRT documentation and follow the steps to install them: https://skirt.ugent.be/root/_home.html
+SKIRT and Python Toolkit for SKIRT (PTS) are required to use these tools. Please navigate to the SKIRT documentation and follow the steps to install them: https://skirt.ugent.be/root/_home.html
 
 ## To install FIRE_studio and SKIRT_tools:
 Navigate to the directory where you want the packages to be installed and git clone the repositories:
