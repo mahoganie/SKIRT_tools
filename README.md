@@ -3,9 +3,9 @@ Tools to help streamline the process of running the SKIRT radiative transfer cod
 
 These tools can be used with any simulation as long as the data is loaded into the correct particle format. However, as the three-band images are layered using FIRE_studio, the mock images tend to turn out best with galaxies from the FIRE simulations.
 
-These tools were inspired by Courtney Klein's mockobservation_tools: 
+These tools were inspired by mockobservation_tools, a package by Courtney Klein: https://github.com/courtk32/mockobservation-tools \
 
-And they make use of FIRE studio, a code created by Alex Gurvich https://ascl.net/2202.006 \
+And they make use of FIRE studio, a code created by Alex Gurvich: https://ascl.net/2202.006 \
 
 
 ## To install SKIRT and PTS:
